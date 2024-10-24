@@ -13,6 +13,49 @@ app.use(cors({
 
 app.use(express.json());
 
+function getWeatherIcon(nnIcon, wwsynIcon) {
+  const weatherIconMap = {
+    'jasno': 'wi-day-sunny',
+    'pretežno jasno': 'wi-day-sunny-overcast',
+    'rahlo oblačno': 'wi-day-cloudy', // Added new condition
+    'delno oblačno': 'wi-day-cloudy',
+    'zmerno oblačno': 'wi-cloud',
+    'pretežno oblačno': 'wi-cloudy',
+    'oblačno': 'wi-cloudy',
+    'megla': 'wi-fog',
+    'dež': 'wi-rain',
+    'ploha': 'wi-showers',
+    'nevihta': 'wi-thunderstorm',
+    'sneg': 'wi-snow',
+    'dež s snegom': 'wi-sleet',
+    'nevihta z dežjem': 'wi-day-storm-showers' // Added new condition
+  };
+
+  const getWeatherIcon = (nnIcon, wwsynIcon) => {
+    const skyCondition = weatherIconMap[nnIcon] || 'wi-day-sunny';
+    const precipitationCondition = {
+      'FG': 'wi-fog',
+      'DZ': 'wi-rain',
+      'FZDZ': 'wi-sleet',
+      'RA': 'wi-rain',
+      'FZRA': 'wi-sleet',
+      'RASN': 'wi-snow',
+      'SHRA': 'wi-showers',
+      'SHRASN': 'wi-showers',
+      'SHSN': 'wi-snow',
+      'SHGR': 'wi-thunderstorm',
+      'TS': 'wi-thunderstorm',
+      'TSRA': 'wi-thunderstorm',
+      'TSRASN': 'wi-thunderstorm',
+      'TSSN': 'wi-snow',
+      'TSGR': 'wi-thunderstorm'
+    }[wwsynIcon] || '';
+
+    return precipitationCondition ? `${skyCondition}-${precipitationCondition}` : skyCondition;
+  };
+  return { weatherIconMap, getWeatherIcon };
+}
+
 router.get('/api/rss-feed', async (req, res) => {
   try {
     const response = await axios.get('https://img.rtvslo.si/feeds/01.xml');
@@ -33,33 +76,6 @@ router.get('/api/weather/current', async (req, res) => {
       const getElementValue = (tagName) => {
         const element = xmlDoc.getElementsByTagName(tagName)[0];
         return element ? element.textContent : null;
-      };
-  
-      const weatherIconMap = {
-        'jasno': 'wi-day-sunny',
-        'pretežno jasno': 'wi-day-sunny-overcast',
-        'delno oblačno': 'wi-day-cloudy',
-        'zmerno oblačno': 'wi-cloud',
-        'pretežno oblačno': 'wi-cloudy',
-        'oblačno': 'wi-cloudy',
-        'megla': 'wi-fog',
-        'dež': 'wi-rain',
-        'ploha': 'wi-showers',
-        'nevihta': 'wi-thunderstorm',
-        'sneg': 'wi-snow',
-        'dež s snegom': 'wi-sleet'
-      };
-  
-      const getWeatherIcon = (nnIcon, wwsynIcon) => {
-        if (wwsynIcon) {
-          const phenomenon = wwsynIcon.split('_')[0].toLowerCase();
-          for (const [key, value] of Object.entries(weatherIconMap)) {
-            if (phenomenon.includes(key)) {
-              return value;
-            }
-          }
-        }
-        return weatherIconMap[nnIcon] || 'wi-day-sunny';
       };
   
       const weatherData = {
@@ -113,33 +129,6 @@ async function fetchForecast() {
     console.error('Error fetching forecast data:', error);
     return [];
   }
-}
-
-function getWeatherIcon(nnIcon, wwsynIcon) {
-  const weatherIconMap = {
-    'clear': 'wi-day-sunny',
-    'mostClear': 'wi-day-sunny-overcast',
-    'partCloudy': 'wi-day-cloudy',
-    'modCloudy': 'wi-cloud',
-    'prevCloudy': 'wi-cloudy',
-    'overcast': 'wi-cloudy',
-    'fog': 'wi-fog',
-    'rain': 'wi-rain',
-    'showers': 'wi-showers',
-    'tstorm': 'wi-thunderstorm',
-    'snow': 'wi-snow',
-    'sleet': 'wi-sleet'
-  };
-
-  if (wwsynIcon) {
-    const phenomenon = wwsynIcon.split('_')[0].toLowerCase();
-    for (const [key, value] of Object.entries(weatherIconMap)) {
-      if (phenomenon.includes(key)) {
-        return value;
-      }
-    }
-  }
-  return weatherIconMap[nnIcon] || 'wi-day-sunny';
 }
 
 router.get('/api/weather/forecast', async (req, res) => {
