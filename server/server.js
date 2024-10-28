@@ -111,7 +111,7 @@ async function fetchForecast() {
         return element ? element.textContent : null;
       };
 
-      const day = getElementValue('valid_day').replace(' CEST', '');
+      const day = getElementValue('valid_day').replace(' CEST', '').replace(' CET', '');
       const lowTemp = getElementValue('tnsyn');
       const highTemp = getElementValue('txsyn');
       const icon = getWeatherIcon(getElementValue('nn_icon'), getElementValue('wwsyn_icon'));
