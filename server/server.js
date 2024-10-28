@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { DOMParser } = require('xmldom');
+const { DOMParser } = require('@xmldom/xmldom');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
