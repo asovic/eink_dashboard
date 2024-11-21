@@ -13,47 +13,9 @@ app.use(cors({
 
 app.use(express.json());
 
-function getWeatherIcon(nnIcon, wwsynIcon) {
-  const weatherIconMap = {
-    'jasno': 'wi-day-sunny',
-    'pretežno jasno': 'wi-day-sunny-overcast',
-    'rahlo oblačno': 'wi-day-cloudy', // Added new condition
-    'delno oblačno': 'wi-day-cloudy',
-    'zmerno oblačno': 'wi-cloud',
-    'pretežno oblačno': 'wi-cloudy',
-    'oblačno': 'wi-cloudy',
-    'megla': 'wi-fog',
-    'dež': 'wi-rain',
-    'ploha': 'wi-showers',
-    'nevihta': 'wi-thunderstorm',
-    'sneg': 'wi-snow',
-    'dež s snegom': 'wi-sleet',
-    'nevihta z dežjem': 'wi-day-storm-showers' // Added new condition
-  };
-
-  const getWeatherIcon = (nnIcon, wwsynIcon) => {
-    const skyCondition = weatherIconMap[nnIcon] || 'wi-day-sunny';
-    const precipitationCondition = {
-      'FG': 'wi-fog',
-      'DZ': 'wi-rain',
-      'FZDZ': 'wi-sleet',
-      'RA': 'wi-rain',
-      'FZRA': 'wi-sleet',
-      'RASN': 'wi-snow',
-      'SHRA': 'wi-showers',
-      'SHRASN': 'wi-showers',
-      'SHSN': 'wi-snow',
-      'SHGR': 'wi-thunderstorm',
-      'TS': 'wi-thunderstorm',
-      'TSRA': 'wi-thunderstorm',
-      'TSRASN': 'wi-thunderstorm',
-      'TSSN': 'wi-snow',
-      'TSGR': 'wi-thunderstorm'
-    }[wwsynIcon] || '';
-
-    return precipitationCondition ? `${skyCondition}-${precipitationCondition}` : skyCondition;
-  };
-  return { weatherIconMap, getWeatherIcon };
+function getWeatherIcon(arso_icon_text) {
+  const baseUrl = 'https://meteo.arso.gov.si/uploads/meteo/style/img/weather/';
+  return `${baseUrl}${arso_icon_text}.png`;
 }
 
 router.get('/api/rss-feed', async (req, res) => {
@@ -85,7 +47,7 @@ router.get('/api/weather/current', async (req, res) => {
         windDirection: getElementValue('dd_shortText'),
         pressure: getElementValue('msl'),
         description: getElementValue('nn_shortText-wwsyn_longText'),
-        icon: `/images/${getWeatherIcon(getElementValue('nn_shortText'), getElementValue('wwsyn_icon'))}.svg`
+        icon: getWeatherIcon(getElementValue('nn_icon-wwsyn_icon'))
       };
   
       res.json(weatherData);

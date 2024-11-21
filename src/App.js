@@ -143,7 +143,7 @@ function App() {
           </div>
           <div className="v19_263">
             <div className="v22_295">
-              <img src={forecastData[4]?.icon || "images/wi-day-cloudy.svg"} alt="Weather"/>
+              <img src={forecastData[4]?.icon || "images/wi-alien.svg"} alt="Weather" onError={(e) => {e.target.onError = null; e.target.src = "images/wi-alien.svg"}}/>
             </div>
           </div>
           <div className="v19_275">
@@ -161,7 +161,7 @@ function App() {
           </div>
           <div className="v19_262">
             <div className="v22_293">
-              <img src={forecastData[3]?.icon || "images/wi-day-cloudy.svg"} alt="Weather"/>
+              <img src={forecastData[3]?.icon || "images/wi-alien.svg"} alt="Weather" onError={(e) => {e.target.onError = null; e.target.src = "images/wi-alien.svg"}}/>
             </div>
           </div>
           <div className="v19_272">
@@ -179,7 +179,7 @@ function App() {
           </div>
           <div className="v19_261">
             <div className="v22_291">
-              <img src={forecastData[2]?.icon || "images/wi-day-cloudy.svg"} alt="Weather"/>
+              <img src={forecastData[2]?.icon || "images/wi-alien.svg"} alt="Weather" onError={(e) => {e.target.onError = null; e.target.src = "images/wi-alien.svg"}}/>
             </div>
           </div>
           <div className="v19_269">
@@ -197,7 +197,7 @@ function App() {
           </div>
           <div className="v19_259">
             <div className="v22_289">
-              <img src={forecastData[1]?.icon || "images/wi-day-cloudy.svg"} alt="Weather"/>
+              <img src={forecastData[1]?.icon || "images/wi-alien.svg"} alt="Weather" onError={(e) => {e.target.onError = null; e.target.src = "images/wi-alien.svg"}}/>
             </div>
           </div>
           <div className="v19_266">
@@ -223,7 +223,7 @@ function App() {
           </div>
           <div className="v19_260">
             <div className="v22_284">
-              <img src={forecastData[0]?.icon || "images/wi-day-cloudy.svg"} alt="Weather"/>
+              <img src={forecastData[0]?.icon || "images/wi-alien.svg"} alt="Weather" onError={(e) => {e.target.onError = null; e.target.src = "images/wi-alien.svg"}}/>
             </div>
           </div>
         </div>
