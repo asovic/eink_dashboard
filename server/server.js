@@ -76,13 +76,13 @@ async function fetchForecast() {
       const day = getElementValue('valid_day').replace(' CEST', '').replace(' CET', '');
       const lowTemp = getElementValue('tnsyn');
       const highTemp = getElementValue('txsyn');
-      const icon = getWeatherIcon(getElementValue('nn_icon'), getElementValue('wwsyn_icon'));
+      const icon = getWeatherIcon(getElementValue('nn_icon-wwsyn_icon'));
 
       forecast.push({
         day,
         lowTemp,
         highTemp,
-        icon: `/images/${icon}.svg`
+        icon
       });
     }
 
