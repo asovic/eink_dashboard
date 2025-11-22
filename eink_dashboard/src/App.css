@@ -11,7 +11,7 @@ body {
 .dashboard-container {
   width: 100%;
   height: 1200px;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   opacity: 1;
   position: relative;
   top: 0px;
@@ -33,13 +33,13 @@ body {
 
 .current-time {
   width: 480px;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 10px;
   left: 20px;
   font-family: Inter;
   font-weight: Regular;
-  font-size: 55px;
+  font-size: 37px;
   opacity: 1;
   text-align: left;
 }
@@ -57,18 +57,18 @@ body {
 
 .battery-level {
   width: 140px;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 0px;
   left: 124px;
   font-family: Inter;
   font-weight: Regular;
-  font-size: 53px;
+  font-size: 37px;
   opacity: 1;
   text-align: left;
 }
 
-.battery-icon {
+/*.battery-icon {
   width: 73px;
   height: 42px;
   opacity: 1;
@@ -76,7 +76,7 @@ body {
   top: 12px;
   left: 46px;
   overflow: hidden;
-  background-image: url('../public/v5_19.png'); /* Assuming image is in public */
+  background-image: url('../public/v5_19.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -95,7 +95,7 @@ body {
 
 .news-title {
   width: 100%;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 3px;
   left: 0px;
@@ -120,7 +120,7 @@ body {
 
 .news-description {
   width: 100%;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   font-family: Inter;
   font-weight: Regular;
@@ -155,7 +155,7 @@ body {
 .weather-icon-large {
   width: 150px;
   height: 150px;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   opacity: 1;
   position: absolute;
   left: 160px;
@@ -181,7 +181,7 @@ body {
 
 .current-temp {
   width: 149px;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 2px;
   left: 3px;
@@ -204,7 +204,7 @@ body {
 
 .location-text {
   width: 283px;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 10px;
   left: 14px;
@@ -226,11 +226,25 @@ body {
 }
 
 /* Day Positioning */
-.day-0 { left: 310px; }
-.day-1 { left: 560px; }
-.day-2 { left: 810px; }
-.day-3 { left: 1060px; }
-.day-4 { left: 1310px; }
+.day-0 {
+  left: 310px;
+}
+
+.day-1 {
+  left: 560px;
+}
+
+.day-2 {
+  left: 810px;
+}
+
+.day-3 {
+  left: 1060px;
+}
+
+.day-4 {
+  left: 1310px;
+}
 
 /* Day Content */
 .day-name {
@@ -245,7 +259,7 @@ body {
 
 .day-label {
   width: 213px;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 10px;
   left: 20px;
@@ -314,10 +328,11 @@ body {
 
 .temp-val {
   width: 93px;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   top: 16px;
-  left: 0px; /* Adjusted for centering in 125px container? Original had 0px for high, 25px for low */
+  left: 0px;
+  /* Adjusted for centering in 125px container? Original had 0px for high, 25px for low */
   font-family: Inter;
   font-weight: Regular;
   font-size: 36px;
@@ -327,5 +342,5 @@ body {
 
 /* Specific adjustment for low temp to match original v23_317 etc */
 .low-temp .temp-val {
-    left: 25px;
+  left: 25px;
 }
