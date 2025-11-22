@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
-const port = process.env.PORT || 3000;
-const serverRoutes = require('./server/server');
+const port = process.env.PORT || 3801;
+const backendUrl = process.env.BACKEND_URL || 'http://localhost:8801';
 
 app.get('/test', (req, res) => {
   res.send(`
@@ -46,8 +47,16 @@ app.get('/test', (req, res) => {
   `);
 });
 
-// Your existing API routes
-app.use('/', serverRoutes);
+// Proxy API requests to the Python backend
+// Note: app.use('/api', ...) strips '/api' from the req.url. 
+// We need to add it back because the backend expects /api/...
+app.use('/api', createProxyMiddleware({
+  target: backendUrl,
+  changeOrigin: true,
+  pathRewrite: {
+    '^': '/api',
+  },
+}));
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'build')));
@@ -60,4 +69,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
+  console.log(`Proxying API requests to ${backendUrl}`);
 });

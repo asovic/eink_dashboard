@@ -1,11 +1,19 @@
+version: '3.8'
+
 services:
-  eink_dashboard:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  backend:
+    build: ./backend
     ports:
-      - "8082:3000"
+      - "8801:8801"
     environment:
-      - NODE_ENV=production
-    volumes:
-      - .:/usr/src/app
+      - PORT=8801
+
+  frontend:
+    build: ./eink_dashboard
+    ports:
+      - "3801:3801"
+    environment:
+      - PORT=3801
+      - BACKEND_URL=http://backend:8801
+    depends_on:
+      - backend

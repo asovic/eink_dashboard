@@ -1,13 +1,14 @@
 * {
-  /* background: rgba(0,0,0,.1) !important; */
   box-sizing: border-box;
 }
 
 body {
   font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
-.v5_14 {
+.dashboard-container {
   width: 100%;
   height: 1200px;
   background: rgba(255,255,255,1);
@@ -18,7 +19,8 @@ body {
   overflow: hidden;
 }
 
-.v5_15 {
+/* Header */
+.header {
   width: 500px;
   min-width: 200px;
   height: 90px;
@@ -29,7 +31,7 @@ body {
   overflow: hidden;
 }
 
-.v5_16 {
+.current-time {
   width: 480px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -42,7 +44,8 @@ body {
   text-align: left;
 }
 
-.v5_17 {
+/* Battery */
+.battery-container {
   width: 270px;
   height: 70px;
   opacity: 1;
@@ -52,7 +55,7 @@ body {
   overflow: hidden;
 }
 
-.v5_18 {
+.battery-level {
   width: 140px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -65,7 +68,7 @@ body {
   text-align: left;
 }
 
-.v5_19 {
+.battery-icon {
   width: 73px;
   height: 42px;
   opacity: 1;
@@ -73,9 +76,13 @@ body {
   top: 12px;
   left: 46px;
   overflow: hidden;
+  background-image: url('../public/v5_19.png'); /* Assuming image is in public */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.v5_20 {
+/* News */
+.news-title-container {
   width: 1560px;
   height: 300px;
   opacity: 1;
@@ -86,7 +93,7 @@ body {
   overflow: hidden;
 }
 
-.v5_21 {
+.news-title {
   width: 100%;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -100,7 +107,7 @@ body {
   text-wrap: balance;
 }
 
-.v5_22 {
+.news-description-container {
   width: 1560px;
   height: 169px;
   opacity: 1;
@@ -111,7 +118,7 @@ body {
   overflow: auto;
 }
 
-.v5_23 {
+.news-description {
   width: 100%;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -123,7 +130,8 @@ body {
   text-wrap: balance;
 }
 
-.v5_24 {
+/* Weather Container */
+.weather-container {
   width: 100%;
   height: 280px;
   opacity: 1;
@@ -133,127 +141,8 @@ body {
   overflow: hidden;
 }
 
-.v19_248, .v19_247, .v19_246, .v19_245, .v19_244 {
-  width: 250px;
-  height: 280px;
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  overflow: hidden;
-}
-
-.v19_248 { left: 1310px; }
-.v19_247 { left: 1060px; }
-.v19_246 { left: 810px; }
-.v19_245 { left: 560px; }
-.v19_244 { left: 310px; }
-
-.v19_253, .v19_252, .v19_251, .v19_250, .v19_249 {
-  width: 250px;
-  height: 66px;
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-
-.v22_299, .v22_298, .v22_297, .v22_288, .v22_283 {
-  width: 213px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-family: Inter;
-  font-weight: Regular;
-  font-size: 36px;
-  opacity: 1;
-  text-align: center;
-}
-
-.v19_263, .v19_262, .v19_261, .v19_259, .v19_260 {
-  width: 250px;
-  height: 148px;
-  opacity: 1;
-  position: absolute;
-  top: 66px;
-  left: 0px;
-  overflow: hidden;
-}
-
-.v22_295, .v22_293, .v22_291, .v22_289, .v22_284 {
-  width: 110px;
-  height: 110px;
-  opacity: 1;
-  position: absolute;
-  top: 19px;
-  left: 70px;
-  overflow: hidden;
-}
-
-.v22_295 img, .v22_293 img, .v22_291 img, .v22_289 img, .v22_284 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.v19_275, .v19_272, .v19_269, .v19_266, .v19_254 {
-  width: 250px;
-  height: 66px;
-  opacity: 1;
-  position: absolute;
-  top: 214px;
-  left: 0px;
-  overflow: hidden;
-}
-
-.v19_276, .v19_273, .v19_270, .v19_267, .v19_264 {
-  width: 125px;
-  height: 66px;
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 125px;
-  overflow: hidden;
-}
-
-.v23_314, .v23_313, .v23_312, .v23_311, .v22_287 {
-  width: 93px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 16px;
-  left: 0px;
-  font-family: Inter;
-  font-weight: Regular;
-  font-size: 36px;
-  opacity: 1;
-  text-align: center;
-}
-
-.v19_277, .v19_274, .v19_271, .v19_268, .v19_265 {
-  width: 125px;
-  height: 66px;
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-
-.v23_317, .v23_316, .v23_315, .v23_309, .v22_286 {
-  width: 93px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 16px;
-  left: 25px;
-  font-family: Inter;
-  font-weight: Regular;
-  font-size: 36px;
-  opacity: 1;
-  text-align: center;
-}
-
-.v19_243 {
+/* Current Weather */
+.current-weather {
   width: 310px;
   height: 160px;
   opacity: 1;
@@ -263,7 +152,7 @@ body {
   overflow: hidden;
 }
 
-.v22_279 {
+.weather-icon-large {
   width: 150px;
   height: 150px;
   background: rgba(255,255,255,1);
@@ -274,23 +163,13 @@ body {
   overflow: hidden;
 }
 
-.v22_279 img {
+.weather-icon-large img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.v22_280 {
-  width: 77px;
-  height: 77px;
-  background: rgba(0,0,0,1);
-  opacity: 1;
-  position: absolute;
-  top: 15px;
-  left: 16px;
-}
-
-.v22_281 {
+.current-temp-container {
   width: 155px;
   height: 160px;
   opacity: 1;
@@ -300,7 +179,7 @@ body {
   overflow: hidden;
 }
 
-.v22_282 {
+.current-temp {
   width: 149px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -313,7 +192,7 @@ body {
   text-align: center;
 }
 
-.v19_242 {
+.location-label {
   width: 310px;
   height: 120px;
   opacity: 1;
@@ -323,7 +202,7 @@ body {
   overflow: hidden;
 }
 
-.v19_278 {
+.location-text {
   width: 283px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -334,4 +213,119 @@ body {
   font-size: 37px;
   opacity: 1;
   text-align: center;
+}
+
+/* Forecast Days */
+.forecast-day {
+  width: 250px;
+  height: 280px;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+/* Day Positioning */
+.day-0 { left: 310px; }
+.day-1 { left: 560px; }
+.day-2 { left: 810px; }
+.day-3 { left: 1060px; }
+.day-4 { left: 1310px; }
+
+/* Day Content */
+.day-name {
+  width: 250px;
+  height: 66px;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.day-label {
+  width: 213px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: Inter;
+  font-weight: Regular;
+  font-size: 36px;
+  opacity: 1;
+  text-align: center;
+}
+
+.day-icon-container {
+  width: 250px;
+  height: 148px;
+  opacity: 1;
+  position: absolute;
+  top: 66px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.day-icon {
+  width: 110px;
+  height: 110px;
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 70px;
+  overflow: hidden;
+}
+
+.day-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.temp-range {
+  width: 250px;
+  height: 66px;
+  opacity: 1;
+  position: absolute;
+  top: 214px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.high-temp {
+  width: 125px;
+  height: 66px;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 125px;
+  overflow: hidden;
+}
+
+.low-temp {
+  width: 125px;
+  height: 66px;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.temp-val {
+  width: 93px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 16px;
+  left: 0px; /* Adjusted for centering in 125px container? Original had 0px for high, 25px for low */
+  font-family: Inter;
+  font-weight: Regular;
+  font-size: 36px;
+  opacity: 1;
+  text-align: center;
+}
+
+/* Specific adjustment for low temp to match original v23_317 etc */
+.low-temp .temp-val {
+    left: 25px;
 }

@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Make port 3000 available to the world outside this container
-EXPOSE 3000
+EXPOSE 3801
 
 # Define environment variable
 ENV NODE_ENV production
